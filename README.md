@@ -18,8 +18,6 @@ The Turning Point - The realization that everyone starts somewhere
 What I've Learned - Key lessons about learning to code
 Where I Am Now - Current state and ongoing growth
 The Truth About Coding (Unlockable) - Final thoughts on coding being for everyone
-🚀 Live Demo
-Visit the live site: https://quemaivuong.github.io
 
 🎯 Purpose
 This portfolio serves as:
