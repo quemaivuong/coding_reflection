@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Coding Journey - From Intimidation to Empowerment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #0f172a;
+            color: #fef3c7;
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: #1e293b;
+            border-bottom: 2px solid #d97706;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 56rem;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .home-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #fbbf24;
+            text-decoration: none;
+            font-size: 1.125rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .home-button:hover {
+            color: #fcd34d;
+        }
+
+        .progress {
+            font-size: 0.875rem;
+            color: #fde68a;
+        }
+
+        main {
+            max-width: 56rem;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-icon {
+            width: 2rem;
+            height: 2rem;
+            color: #f59e0b;
+        }
+
+        .divider {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, #d97706, transparent);
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: rgba(254, 243, 199, 0.9);
+        }
+
+        code {
+            background-color: #1e293b;
+            padding: 0.125rem 0.5rem;
+            border-radius: 0.25rem;
+            color: #fcd34d;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .card {
+            background-color: rgba(30, 41, 59, 0.6);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(217, 119, 6, 0.5);
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .code-block {
+            background-color: rgba(15, 23, 42, 0.8);
+            padding: 1rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            color: #34d399;
+            margin: 1rem 0;
+        }
+
+        .lesson-card {
+            background-color: rgba(30, 41, 59, 0.6);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid #3b82f6;
+            margin: 1.5rem 0;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .nav-card {
+            background-color: rgba(30, 41, 59, 0.6);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 2px solid #334155;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-card:hover {
+            border-color: #fbbf24;
+            background-color: rgba(30, 41, 59, 0.8);
+        }
+
+        .nav-card.visited {
+            border-color: #f59e0b;
+        }
+
+        .nav-card-content {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .nav-card h3 {
+            margin: 0;
+            color: #fef3c7;
+            transition: color 0.3s;
+        }
+
+        .nav-card:hover h3 {
+            color: #fcd34d;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: #f59e0b;
+        }
+
+        .bottom-nav {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .bottom-nav {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: #1e293b;
+            color: #fde68a;
+        }
+
+        .btn-secondary:hover {
+            background-color: #334155;
+        }
+
+        .btn-primary {
+            background-color: #d97706;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #f59e0b;
+        }
+
+        .btn-primary.pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .unlock-message {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: rgba(120, 53, 15, 0.3);
+            border: 2px solid #f59e0b;
+            border-radius: 0.5rem;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            box-shadow: 0 4px 8px rgba(217, 119, 6, 0.3);
+        }
+
+        .unlock-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .unlock-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fbbf24;
+        }
+
+        .unlock-text {
+            color: rgba(254, 243, 199, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .quote-box {
+            background-color: rgba(30, 41, 59, 0.8);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid #10b981;
+            margin: 2rem 0;
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #34d399;
+            font-style: italic;
+        }
+
+        .final-quote {
+            background-color: rgba(30, 41, 59, 0.8);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            border: 2px solid #10b981;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .final-quote-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #34d399;
+        }
+
+        .center-btn {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+        }
+
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        em {
+            color: #fcd34d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <button class="home-button" onclick="showPage('home')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>My Coding Journey</span>
+            </button>
+            <div class="progress">
+                <span id="progress-text">0/4 explored</span>
+            </div>
+        </div>
+    </header>
+
+    <main id="content">
+        <!-- Content will be dynamically loaded here -->
+    </main>
+
+    <script>
+        const visitedPages = new Set();
+        const requiredVisits = 4;
+
+        const pages = {
+            home: {
+                title: 'My Coding Journey',
+                content: `
+                    <div class="section-header">
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        <div class="divider"></div>
+                    </div>
+                    <h1 style="color: #fbbf24;">My Coding Journey</h1>
+                    <p style="font-size: 1.125rem;">
+                        I still remember my very first attempt at learning Python. It was a Microsoft course I tried to take on my own before coming to Penn. I didn't finish it.
+                    </p>
+                    <p style="font-size: 1.125rem;">
+                        But this is a story about growth, mistakes, breakthroughs, and realizing that coding really is for everyone.
+                    </p>
+                    <div class="card">
+                        <h2 style="color: #fbbf24; margin-top: 0;">Choose Your Path</h2>
+                        <p style="color: rgba(254, 243, 199, 0.8);">Explore the struggles, lessons, and moments that shaped my journey. Visit at least ${requiredVisits} sections to unlock the final realization.</p>
+                        <p style="font-size: 0.875rem; color: rgba(253, 230, 138, 0.7);">Progress: <span id="home-progress">0</span>/${requiredVisits} sections visited</p>
+                    </div>
+                    <div class="nav-grid" id="nav-grid">
+                        <!-- Navigation cards will be inserted here -->
+                    </div>
+                    <div id="unlock-message" class="hidden"></div>
+                `
+            },
+            struggles: {
+                title: 'The Early Struggles',
+                color: '#fb7185',
+                content: `
+                    <h1 style="color: #fb7185;">The Early Struggles</h1>
+                    
+                    <h3 style="color: #fda4af;">If-Else Confusion</h3>
+                    <p>
+                        In one of our early homeworks, I completely mixed up <code>else</code> and <code>elif</code>. I genuinely thought <code>else</code> went in the body of the code and <code>elif</code> was for the last condition. It was totally backwards, and I only realized it when my code wouldn't run. That was embarrassing, but at least it was a quick fix.
+                    </p>
+
+                    <h3 style="color: #fda4af;">The Infinite Loop Incident</h3>
+                    <p>
+                        I was working on an assignment and forgot to add a <code>break</code> statement. My loop just kept going... and going... and going. For a genuinely terrifying moment, I thought I was going to break my laptop. I could practically hear the fan screaming. Thankfully, I caught it during testing, but that panic? That was real. Lesson learned: always break your loops, or they'll break you.
+                    </p>
+
+                    <h3 style="color: #fda4af;">Indentation Hell</h3>
+                    <p>
+                        I kept getting these cryptic error messages, and I had no idea what Python wanted from me. I moved things in and out, tried different positions, got more and more confused with each attempt. My code looked fine to me! It turned out the real issue was an if-else syntax problem, but because everything in Python is tied to indentation, that's where the error showed up. It made me realize how brain-wracking indentation really is—you have to be crystal clear about the logic in your head before you write a single line, and then you have to be super careful tracking where everything sits. One wrong tab, one extra space, and everything falls apart.
+                    </p>
+
+                    <h3 style="color: #fda4af;">String Confusion</h3>
+                    <p>
+                        Strings are supposed to be basic, right? A fundamental data type. But I kept mixing them up with integers, especially when the input was a number. I'd write code expecting one format, but the data would be in another. The function wanted a string, but I gave it an integer. Or vice versa. It happened over and over again.
+                    </p>
+                `
+            },
+            clicking: {
+                title: 'Things Started Clicking',
+                color: '#fbbf24',
+                content: `
+                    <h1 style="color: #fbbf24;">Things Started Clicking</h1>
+                    
+                    <p>
+                        Despite all the frustration, things slowly started clicking into place. I finally understood that dictionaries and lists are mutable—you can change them—while strings and tuples are immutable, locked in once you create them. It seems simple now, but at the time, it felt like unlocking a secret.
+                    </p>
+
+                    <div class="card" style="border-color: rgba(251, 191, 36, 0.5);">
+                        <h3 style="color: #fcd34d; margin-top: 0;">Python's Personality</h3>
+                        <p>
+                            I discovered something interesting about Python. Sometimes it's incredibly strict—syntax errors will shut you down immediately. But other times, it's surprisingly forgiving.
+                        </p>
+                        <div class="code-block">
+                            <div># Boolean conversion</div>
+                            <div>0, "", [], {}, None → False</div>
+                            <div>Everything else → True</div>
+                        </div>
+                    </div>
+
+                    <p>
+                        There was still the ongoing question of when to use strings versus lists versus tuples. I understood the technical explanation, but in practice? The choice often came down to the specific situation, what the syntax required, and honestly, personal preference. It was one of those things that made sense in theory but felt fuzzy in application.
+                    </p>
+
+                    <p>
+                        Still, I was making progress. I started participating more in class. Not a lot, but enough to feel like I was part of the conversation instead of just observing it. I realized something important: my mistakes, my learning process—that was literally the point of being there. It made me human. It made me belong.
+                    </p>
+                `
+            },
+            breakdown: {
+                title: 'The Crisis Point',
+                color: '#c084fc',
+                content: `
+                    <h1 style="color: #c084fc;">The Crisis Point</h1>
+                    
+                    <p>
+                        Then came December 8th. The final project presentations.
+                    </p>
+
+                    <p>
+                        I walked into class feeling pretty good about how far I'd come. Sure, I wasn't an expert, but I'd learned a lot. I could write code. I could debug. I was starting to feel like maybe I actually belonged in this space.
+                    </p>
+
+                    <p>
+                        And then the presentations started.
+                    </p>
+
+                    <div class="card" style="border-color: rgba(192, 132, 252, 0.5);">
+                        <p>
+                            Someone pulled up a 3000-line coding project. <em>Three thousand lines.</em> I'd been proud of writing fifty. Another person showed this incredible data analysis on how student writing styles changed before and after AI—complete with visualizations, statistical analysis, the works. Someone else had built something so polished it looked like a professional app.
+                        </p>
+                    </div>
+
+                    <p>
+                        I sat there, and something inside me just... cracked. What was I even doing here? I'd never get to that level. These people were on a completely different plane, and I was still struggling with basic string manipulation.
+                    </p>
+
+                    <p>
+                        One presentation showed this perfectly organized file structure, and I remembered my Week 7 project where I couldn't figure out why Python wouldn't find my files. It was because I didn't understand that Python needs the exact path—it can't just magically know where things are. That had been such a painful lesson, and seeing someone implement it flawlessly just highlighted how far behind I was.
+                    </p>
+
+                    <p>
+                        The learning curve felt impossibly steep. Halfway through the presentations, I had a genuine mental breakdown. Not the dramatic kind where you storm out—the quiet kind where you sit there and everything inside you is screaming "I can't do this."
+                    </p>
+                `
+            },
+            shift: {
+                title: 'The Turning Point',
+                color: '#34d399',
+                content: `
+                    <h1 style="color: #34d399;">The Shift</h1>
+                    
+                    <p>
+                        But then, somehow, I calmed down. Maybe it was exhaustion. Maybe it was just hitting rock bottom. But sitting there in my panic, I had this thought:
+                    </p>
+
+                    <div class="quote-box">
+                        <p class="quote-text">
+                            "We all have to start from somewhere."
+                        </p>
+                    </div>
+
+                    <p>
+                        That person with the 3000-line project? They probably started with fifty lines too. That data analysis? Built on months or years of learning statistics and Python libraries. That polished app? Countless hours of trial and error behind it.
+                    </p>
+
+                    <p>
+                        And me? I couldn't finish that Microsoft course before Penn. But now I was sitting in a classroom, understanding concepts, writing actual working code, contributing to discussions. I'd gone from not being able to set up Python to building functioning programs. That was real progress, even if it didn't look like 3000 lines.
+                    </p>
+
+                    <p>
+                        I thought about anti-fragility, a concept I'd come across earlier. It's this idea that some things actually get stronger from stress and failure. Maybe that was me. The infinite loop panic taught me to always check for breaks. The indentation nightmare taught me to think through my logic before typing. Every error message made me slightly better at debugging.
+                    </p>
+
+                    <div class="card" style="border-color: #10b981;">
+                        <p style="font-size: 1.25rem; font-weight: 600; color: #34d399; margin: 0;">
+                            It doesn't get easier, but I get stronger.
+                        </p>
+                    </div>
+
+                    <p>
+                        The real moment I knew something had changed? Prof. Chen mentioned Hackathons and Kaggle competitions, and instead of feeling that familiar wave of "that's not for people like me," I felt... curious. Interested. Like maybe, possibly, someday I could try something like that.
+                    </p>
+                `
+            },
+            lessons: {
+                title: "What I've Learned",
+                color: '#60a5fa',
+                content: `
+                    <h1 style="color: #60a5fa;">What I've Learned</h1>
+                    
+                    <p style="margin-bottom: 1.5rem;">
+                        Here's what I know now that I didn't know at the start:
+                    </p>
+
+                    <div class="lesson-card">
+                        <h3 style="color: #93c5fd; margin-top: 0;">You don't need to know everything</h3>
+                        <p style="margin: 0;">
+                            That person with the 3000-line project doesn't know everything either—they know what they needed for that specific project. You need specific skills for specific things. That's it. Not every tool, not every library, not every framework. Just what you need for what you're building.
+                        </p>
+                    </div>
+
+                    <div class="lesson-card">
+                        <h3 style="color: #93c5fd; margin-top: 0;">You can learn almost anything</h3>
+                        <p style="margin: 0;">
+                            The question isn't "Can I do this?" It's "Who can teach me? What resources are available?" There's documentation, tutorials, forums, classmates, professors, AI assistants. The information is out there.
+                        </p>
+                    </div>
+
+                    <div class="lesson-card">
+                        <h3 style="color: #93c5fd; margin-top: 0;">Keep an open mind</h3>
+                        <p style="margin: 0;">
+                            There's so much I haven't learned, and that's okay. I can do things my own way. There's a place for me in this space, even if I take a different path than someone else.
+                        </p>
+                    </div>
+
+                    <div class="lesson-card">
+                        <h3 style="color: #93c5fd; margin-top: 0;">Share your struggles</h3>
+                        <p style="margin: 0;">
+                            That classmate talking about Figma being harder than expected? That helped me. When I mention my infinite loop panic, maybe it helps someone else feel less alone. We're all figuring this out together.
+                        </p>
+                    </div>
+
+                    <div class="lesson-card">
+                        <h3 style="color: #93c5fd; margin-top: 0;">Don't talk bad about yourself</h3>
+                        <p style="margin: 0;">
+                            I'm trying to get better at this. When I catch myself thinking "I'm so stupid for not knowing this," I try to reframe it: "I haven't learned this <em>yet</em>." That "yet" makes all the difference.
+                        </p>
+                    </div>
+
+                    <div class="lesson-card">
+                        <h3 style="color: #93c5fd; margin-top: 0;">Build your support system</h3>
+                        <p style="margin: 0;">
+                            AI can help, but it's not everything. It's part of the support system. Real people, real community, real conversations—those matter just as much. Maybe more.
+                        </p>
+                    </div>
+                `
+            },
+            now: {
+                title: 'Where I Am Now',
+                color: '#22d3ee',
+                content: `
+                    <h1 style="color: #22d3ee;">Where I Am Now</h1>
+                    
+                    <p>
+                        I'm still not using those advanced testing approaches we learned in Module 5. I'm still doing it the basic way: write some code, throw in <code>print()</code> statements, run it, fix the errors, repeat. Eventually I'll level up to the fancier methods. But not today, and that's fine.
+                    </p>
+
+                    <p>
+                        I'm not where that person with the 3000-line project is. But I'm also not where I was when I couldn't finish the Microsoft course. I'm somewhere in the middle—still learning, still making mistakes, still growing.
+                    </p>
+
+                    <div class="card" style="border-color: #06b6d4;">
+                        <p style="font-size: 1.125rem; color: #67e8f9; font-style: italic; margin: 0;">
+                            "I'm somewhere in the middle—still learning, still making mistakes, still growing."
+                        </p>
+                    </div>
+                `
+            },
+            final: {
+                title: 'The Truth About Coding',
+                color: '#34d399',
+                content: `
+                    <h1 style="color: #34d399;">The Truth About Coding</h1>
+                    
+                    <p>
+                        Coding isn't just for the naturally gifted or the computer science majors or the people who started programming at twelve. It's not reserved for people who can write 3000-line projects or build professional-looking apps or understand every concept immediately.
+                    </p>
+
+                    <p>
+                        Coding is for everyone. Including people like me who mess up if-else statements, panic over infinite loops, and have breakdowns in the middle of final presentations.
+                    </p>
+
+                    <p>
+                        The journey from intimidated to empowered isn't a straight line. It's messy and frustrating. There are moments where you'll see someone else's amazing work and feel like you'll never measure up. There are moments where you'll want to quit, where you'll question if you belong here.
+                    </p>
+
+                    <p>
+                        But on the other side of that struggle is a version of you that's stronger and more capable than you realized. You go from being elusive to participatory. From feeling like an outsider to understanding that your mistakes make you belong even more, not less.
+                    </p>
+
+                    <p>
+                        I went from not finishing a beginner course to sitting in a classroom contributing to discussions about complex code. I learned to be more resilient. I learned that it's okay to struggle, okay to not know, okay to take longer than someone else.
+                    </p>
+
+                    <p>
+                        Every debugging session, every syntax error, every moment of confusion, even that mental breakdown during presentations—all of it was worth it. Because I'm not just learning to code.
+                    </p>
+
+                    <div class="final-quote">
+                        <p class="final-quote-text">
+                            I'm learning that I'm capable of more than I think.
+                        </p>
+                    </div>
+
+                    <p>
+                        And if I can do this—if I can go from giving up on that online course to actually helping classmates debug their code—then there's absolutely a path forward for you too. We're all on our own timelines, learning in our own ways, making our own mistakes and discoveries.
+                    </p>
+
+                    <p style="font-size: 1.25rem; color: #34d399; font-weight: 600; margin-top: 2rem;">
+                        Keep going. You've got this. We've got this.
+                    </p>
+
+                    <p style="margin-top: 1rem;">
+                        Because coding? It really is for everyone.
+                    </p>
+
+                    <div class="center-btn">
+                        <button class="btn btn-primary btn-large" onclick="showPage('home')">
+                            Start Over
+                        </button>
+                    </div>
+                `
+            }
+        };
+
+        const navigationItems = [
+            { id: 'struggles', label: 'The Early Struggles', color: '#fb7185' },
+            { id: 'clicking', label: 'Things Started Clicking', color: '#fbbf24' },
+            { id: 'breakdown', label: 'The Crisis Point', color: '#c084fc' },
+            { id: 'shift', label: 'The Turning Point', color: '#34d399' },
+            { id: 'lessons', label: "What I've Learned", color: '#60a5fa' },
+            { id: 'now', label: 'Where I Am Now', color: '#22d3ee' }
+        ];
+
+        function updateProgress() {
+            const count = visitedPages.size;
+            document.getElementById('progress-text').textContent = `${count}/${requiredVisits} explored`;
+            const homeProgress = document.getElementById('home-progress');
+            if (homeProgress) {
+                homeProgress.textContent = count;
+            }
+        }
+
+        function renderNavigation() {
+            const navGrid = document.getElementById('nav-grid');
+            if (!navGrid) return;
+
+            navGrid.innerHTML = navigationItems.map(item => `
+                <div class="nav-card ${visitedPages.has(item.id) ? 'visited' : ''}" onclick="showPage('${item.id}')">
+                    ${visitedPages.has(item.id) ? '<svg class="checkmark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>' : ''}
+                    <div class="nav-card-content">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="${item.color}" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        </svg>
+                        <h3>${item.label}</h3>
+                    </div>
